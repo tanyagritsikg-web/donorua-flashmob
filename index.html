@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Донорство – це база. Флешмоб ДонорUA 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -16,7 +16,7 @@
   --lightgray:#F4F4F4;
   --white:#FFFFFF;
 }
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
 body{font-family:'Inter',sans-serif;background:var(--white);color:var(--black);line-height:1.6;overflow-x:hidden;}
 
 /* SCROLL ANIMATIONS */
@@ -78,7 +78,7 @@ a.donor-link{color:var(--red);font-weight:800;text-decoration:underline;}
 /* TIMELINE */
 .section-gray{background:var(--lightgray);padding:100px 60px;}
 .timeline-wrap{overflow-x:auto;margin-top:48px;padding-bottom:8px;}
-.timeline-svg{min-width:640px;width:100%;}
+.timeline-svg{min-width:0;width:100%;}
 .confirm-bar{display:flex;align-items:center;gap:12px;margin-top:28px;flex-wrap:wrap;}
 .confirm-text{font-size:15px;color:#333;}
 .confirm-text strong{font-weight:700;}
@@ -364,7 +364,7 @@ footer{padding:32px 60px;border-top:1px solid #eee;display:flex;align-items:cent
 
         <!-- TIMELINE BUSINESS: all drops solid -->
         <div style="overflow-x:auto;margin-bottom:48px;">
-          <svg viewBox="0 0 700 200" style="width:100%;min-width:560px;" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 700 200" style="width:100%;min-width:0;display:block;" xmlns="http://www.w3.org/2000/svg">
             <!-- line -->
             <line x1="40" y1="108" x2="660" y2="108" stroke="#E20B1D" stroke-width="2.5"/>
             <!-- labels -->
@@ -498,7 +498,7 @@ footer{padding:32px 60px;border-top:1px solid #eee;display:flex;align-items:cent
 
         <!-- TIMELINE PEOPLE: all drops solid -->
         <div style="overflow-x:auto;margin-bottom:48px;">
-          <svg viewBox="0 0 560 200" style="width:100%;min-width:420px;" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 560 200" style="width:100%;min-width:0;display:block;" xmlns="http://www.w3.org/2000/svg">
             <line x1="40" y1="108" x2="520" y2="108" stroke="#E20B1D" stroke-width="2.5"/>
             <text x="100" y="18" text-anchor="middle" fill="#E20B1D" font-family="Inter,sans-serif" font-size="14" font-weight="700">8.06–13.06</text>
             <text x="233" y="18" text-anchor="middle" fill="#E20B1D" font-family="Inter,sans-serif" font-size="14" font-weight="700">13.06</text>
@@ -627,7 +627,7 @@ footer{padding:32px 60px;border-top:1px solid #eee;display:flex;align-items:cent
 
     </div>
     <div style="margin-top:32px;text-align:center;" class="reveal">
-      <div style="display:inline-flex;align-items:center;gap:16px;background:white;border-radius:16px;padding:20px 32px;border:2px solid #eee;">
+      <div style="display:inline-flex;align-items:center;gap:16px;background:white;border-radius:16px;padding:20px 32px;border:2px solid #eee;max-width:100%;box-sizing:border-box;flex-wrap:wrap;justify-content:center;">
         <span style="font-size:clamp(18px,2.5vw,28px);font-weight:800;color:#E20B1D;letter-spacing:-0.5px;">#донорствоцебаза&nbsp;&nbsp;#здавайкроврегулярно</span>
         <button onclick="navigator.clipboard.writeText('#донорствоцебаза #здавайкроврегулярно');this.textContent='Скопійовано ✓';setTimeout(()=>this.textContent='Скопіювати',2000)" style="background:#E20B1D;color:white;border:none;border-radius:100px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:Inter,sans-serif;white-space:nowrap;transition:opacity 0.2s;flex-shrink:0;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Скопіювати</button>
       </div>
@@ -727,61 +727,94 @@ function downloadImg(key) {
 @media(max-width:768px){
 
   /* --- Загальні відступи --- */
-  header,.section,.section-red,.section-gray,.section-cta{padding:48px 20px;}
+  header,.section,.section-red,.section-gray,.section-cta{padding:24px 18px;}
   .section-inner{padding:0;}
 
-  /* --- Хедер --- */
-  .logo-wrap{margin-bottom:36px;}
-  .logo-wrap img{height:44px;}
-  header .header-inner > div[style*="grid"]{
+  /* --- Шрифти --- */
+  h2{font-size:26px!important;letter-spacing:-0.5px!important;margin-bottom:10px!important;}
+  .section p{font-size:15px!important;line-height:1.65!important;margin-bottom:14px!important;}
+  .section-label{font-size:11px!important;margin-bottom:12px!important;}
+
+  /* --- Інлайн grid → одна колонка --- */
+  [style*="grid-template-columns:1fr 1fr"]{
     grid-template-columns:1fr!important;
-    gap:32px!important;
+    gap:16px!important;
   }
-  .header-actions{flex-direction:column;align-items:flex-start;gap:12px;}
+  [style*="grid-template-columns:1fr auto"]{
+    grid-template-columns:1fr!important;
+    gap:24px!important;
+  }
+
+  /* --- Хедер --- */
+  header{overflow:hidden;padding-top:20px!important;padding-bottom:24px!important;}
+  .logo-wrap{margin-bottom:16px;}
+  .logo-wrap img{height:38px;}
+  .header-eyebrow{font-size:11px!important;margin-bottom:16px!important;}
+  .header-actions{flex-direction:column;align-items:flex-start;gap:10px;}
   .scroll-hint{display:none;}
 
   /* --- Статистика --- */
-  .stats-grid{grid-template-columns:1fr;gap:12px;background:transparent;}
-  .stat-card{border:1px solid #eee;border-radius:12px;}
+  .stats-grid{grid-template-columns:1fr;gap:8px;background:transparent;margin:24px 0!important;}
+  .stat-card{border:1px solid #eee;border-radius:12px;padding:16px!important;}
+  .stat-num{font-size:clamp(36px,10vw,52px)!important;}
 
   /* --- Таймлайн --- */
-  .section-gray{padding:48px 20px;}
-  .timeline-wrap{margin-top:28px;}
-  .confirm-bar{flex-direction:column;align-items:flex-start;gap:10px;}
+  .section-gray{padding:32px 18px!important;}
+  .timeline-wrap{margin-top:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .confirm-bar{flex-direction:column;align-items:flex-start;gap:8px;}
 
   /* --- Слайдер --- */
-  .slider-tabs{gap:8px;padding:10px 16px 0;overflow-x:auto;}
-  .slider-tab{padding:14px 16px;font-size:14px;white-space:nowrap;flex:0 0 auto;}
-  .slider-slide{padding:28px 20px 48px;}
+  .slider-tabs{gap:6px;padding:8px 10px 0;overflow-x:visible;max-width:100%;}
+  .slider-tab{padding:9px 10px;font-size:11px;white-space:normal;flex:1;text-align:center;line-height:1.2;}
+  .slider-slide{padding:20px 16px 24px;}
+  .slider-switch-btn{width:100%;box-sizing:border-box;justify-content:center;margin-top:20px;padding:12px 16px;font-size:13px;}
 
   /* --- Mockup grid у слайді --- */
-  .mockup-grid{grid-template-columns:1fr!important;gap:16px;max-width:360px;margin-left:auto;margin-right:auto;}
+  .mockup-grid{grid-template-columns:1fr!important;gap:12px;max-width:300px;margin-left:auto;margin-right:auto;}
+  .mockup-card{font-size:12px!important;}
 
   /* --- Mockups row (телефони) --- */
-  .mockups-row{flex-direction:column;align-items:center;gap:28px;}
-  .phone{width:100%;max-width:300px;}
+  .mockups-row{flex-direction:column;align-items:center;gap:20px;}
+  .phone{width:100%;max-width:260px;}
 
   /* --- Матеріали --- */
-  .materials-grid{grid-template-columns:1fr;}
+  .materials-grid{grid-template-columns:1fr;gap:10px;}
   .mat-card.full{grid-column:auto;}
-  .mat-card{padding:24px 20px;}
+  .mat-card{padding:16px 16px;}
 
   /* --- CTA секція --- */
-  .section-cta{padding:72px 24px;}
-  .section-cta h2{letter-spacing:-1px;}
+  .section-cta{padding:36px 20px!important;}
 
   /* --- Кнопки --- */
-  .pulse-btn-white,.pulse-btn-red{padding:16px 28px!important;font-size:15px!important;width:100%;max-width:360px;box-sizing:border-box;text-align:center;justify-content:center;}
+  .pulse-btn-white,.pulse-btn-red{padding:14px 24px!important;font-size:14px!important;width:100%;max-width:320px;box-sizing:border-box;text-align:center;justify-content:center;}
 
   /* --- Футер --- */
-  footer{padding:24px 20px;flex-direction:column;align-items:flex-start;gap:12px;}
+  footer{padding:16px 18px;flex-direction:column;align-items:flex-start;gap:8px;}
+  .footer-text{font-size:12px!important;}
 
   /* --- Соціальна бічна панель --- */
-  .social-bar{right:10px;}
-  .social-bar a{width:32px;height:32px;}
+  .social-bar{right:8px;}
+  .social-bar a{width:30px;height:30px;}
+  .social-bar svg{width:15px;height:15px;}
 
   /* --- Зображення --- */
   img{max-width:100%;height:auto;}
+
+  /* --- Хештег блок --- */
+  [style*="inline-flex"][style*="border-radius:16px"]{
+    width:100%!important;
+    box-sizing:border-box;
+    padding:14px 16px!important;
+    flex-wrap:wrap;
+    gap:10px!important;
+    justify-content:center;
+    display:flex!important;
+  }
+  [style*="inline-flex"][style*="border-radius:16px"] span{
+    font-size:14px!important;
+    word-break:break-word;
+    text-align:center;
+  }
 }
 
 /* =========================================
@@ -815,6 +848,17 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 <script>
 // SLIDER
 let currentSlide = 'business';
+const isMobile = () => window.innerWidth <= 768;
+
+function setViewportHeight() {
+  if (!isMobile()) return;
+  const viewport = document.querySelector('.slider-viewport');
+  const track = document.getElementById('sliderTrack');
+  if (!viewport || !track) return;
+  const slides = track.querySelectorAll('.slider-slide');
+  const activeSlide = currentSlide === 'people' ? slides[1] : slides[0];
+  if (activeSlide) viewport.style.height = activeSlide.offsetHeight + 'px';
+}
 
 function goToSlide(which) {
   currentSlide = which;
@@ -832,11 +876,30 @@ function goToSlide(which) {
     tabPeople.classList.remove('active');
   }
 
-  // Scroll to section with slight delay so slide starts first
+  // Висота після завершення CSS анімації (450ms)
+  setTimeout(setViewportHeight, 460);
+
   setTimeout(() => {
     document.getElementById('join').scrollIntoView({behavior: 'smooth', block: 'start'});
   }, 80);
 }
+
+window.addEventListener('load', () => {
+  if (!isMobile()) return;
+  const viewport = document.querySelector('.slider-viewport');
+  const track = document.getElementById('sliderTrack');
+  if (!viewport || !track) return;
+  const slides = track.querySelectorAll('.slider-slide');
+
+  // Тимчасово знімаємо overflow щоб виміряти реальну висоту
+  const origOverflow = viewport.style.overflow;
+  viewport.style.overflow = 'visible';
+
+  // Вимірюємо висоту бізнес-слайду (активний за замовчуванням)
+  if (slides[0]) viewport.style.height = slides[0].offsetHeight + 'px';
+  viewport.style.overflow = origOverflow || '';
+});
+window.addEventListener('resize', setViewportHeight);
 </script>
 
 </body>
